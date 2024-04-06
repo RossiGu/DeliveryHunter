@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DeliveryHunter")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4190c72458fcc9a97532dd2babd27340529d62fe")]
 [assembly: System.Reflection.AssemblyProductAttribute("DeliveryHunter")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DeliveryHunter")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
