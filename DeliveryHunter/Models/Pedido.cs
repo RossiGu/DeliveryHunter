@@ -1,7 +1,10 @@
-﻿namespace DeliveryHunter.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace DeliveryHunter.Models
 {
     public class Pedido
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public Cliente Cliente { get; set; }
         public Estabelecimento Estabelecimento { get; set; }

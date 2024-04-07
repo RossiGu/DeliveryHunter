@@ -12,46 +12,46 @@ namespace DeliveryHunter.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class ProdutosController : ControllerBase
+    public class CategoriasController : ControllerBase
     {
         private readonly Context _context;
 
-        public ProdutosController(Context context)
+        public CategoriasController(Context context)
         {
             _context = context;
         }
 
         
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Produto>>> Getprodutos()
+        public async Task<ActionResult<IEnumerable<Categoria>>> Getcategorias()
         {
-            return await _context.produtos.ToListAsync();
+            return await _context.categorias.ToListAsync();
         }
 
         
         [HttpGet("{id}")]
-        public async Task<ActionResult<Produto>> GetProduto(int id)
+        public async Task<ActionResult<Categoria>> GetCategoria(int id)
         {
-            var produto = await _context.produtos.FindAsync(id);
+            var categoria = await _context.categorias.FindAsync(id);
 
-            if (produto == null)
+            if (categoria == null)
             {
                 return NotFound();
             }
 
-            return produto;
+            return categoria;
         }
 
         
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProduto(int id, Produto produto)
+        public async Task<IActionResult> PutCategoria(int id, Categoria categoria)
         {
-            if (id != produto.ProdutoId)
+            if (id != categoria.CategoriaId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(produto).State = EntityState.Modified;
+            _context.Entry(categoria).State = EntityState.Modified;
 
             try
             {
@@ -59,7 +59,7 @@ namespace DeliveryHunter.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProdutoExists(id))
+                if (!CategoriaExists(id))
                 {
                     return NotFound();
                 }
@@ -72,35 +72,35 @@ namespace DeliveryHunter.Controllers
             return NoContent();
         }
 
-       
+        
         [HttpPost]
-        public async Task<ActionResult<Produto>> PostProduto(Produto produto)
+        public async Task<ActionResult<Categoria>> PostCategoria(Categoria categoria)
         {
-            _context.produtos.Add(produto);
+            _context.categorias.Add(categoria);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProduto", new { id = produto.ProdutoId }, produto);
+            return CreatedAtAction("GetCategoria", new { id = categoria.CategoriaId }, categoria);
         }
 
         
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProduto(int id)
+        public async Task<IActionResult> DeleteCategoria(int id)
         {
-            var produto = await _context.produtos.FindAsync(id);
-            if (produto == null)
+            var categoria = await _context.categorias.FindAsync(id);
+            if (categoria == null)
             {
                 return NotFound();
             }
 
-            _context.produtos.Remove(produto);
+            _context.categorias.Remove(categoria);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool ProdutoExists(int id)
+        private bool CategoriaExists(int id)
         {
-            return _context.produtos.Any(e => e.ProdutoId == id);
+            return _context.categorias.Any(e => e.CategoriaId == id);
         }
     }
 }
